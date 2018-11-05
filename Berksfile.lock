@@ -1,0 +1,9 @@
+DEPENDENCIES
+  roivant (>= 0.0.35)
+
+GRAPH
+  docker (4.6.7)
+  roivant (0.0.35)
+    docker (>= 0.0.0)
+    supervisord (>= 0.0.0)
+  supervisord (1.0.1)
