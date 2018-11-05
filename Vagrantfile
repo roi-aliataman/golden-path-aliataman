@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     # VM. This is most useful if you want to point your browser at a webserver
     # running on the VM.
     #
-    # machine.vm.network :forwarded_port, guest: 80, host: 8080
+    machine.vm.network :forwarded_port, guest: 5000, host: 5000
 
     provision_chef(machine) do |chef|
       # Add all the roles you want.
