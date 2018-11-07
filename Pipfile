@@ -8,3 +8,5 @@ pyyaml = "==3.11"
 Flask = ">=0.12.1"
 
 [dev-packages]
+pytest = "*"
+coverage = "*"
