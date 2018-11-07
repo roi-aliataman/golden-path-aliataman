@@ -12,14 +12,25 @@ end
 Tasks::Test::DevopsRails.new
 
 namespace :test do
-  desc 'Run the testing pipeline'
-  task :all do
-    exit_code, stdout, stderr = execute_in_dev_vm 'PYTHONPATH=. pytest'
-    puts stdout
- end
 
-  desc 'Run unit tests'
-  task :unit do
-    puts 'test:unit task'
+  include Tasks::Util
+  
+  desc "Run the tests"
+  task :all => ['test:unit', 'test:coverage'] do
+    puts "Ok"
   end
+
+
+  desc "Run the unit tests"
+  task :unit do
+    stdout, stderr = execute_in_dev_vm 'coverage run -m pytest'
+    puts stdout
+  end
+
+  desc "Run the test coverage"
+  task :coverage do
+    stdout, stderr = execute_in_dev_vm 'coverage report'
+    puts stdout
+  end
+
 end
