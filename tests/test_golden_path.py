@@ -10,7 +10,7 @@ def client():
     golden_path.app.config['TESTING'] = True
     client = golden_path.app.test_client()
     yield client
-    
+
 def test_root_path(client):
     """Make sure the root path returns {"hello":"world"}."""
     rv = client.get('/')
