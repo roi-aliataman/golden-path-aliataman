@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
-app = Flask('golden_path')
+from roivant import Config
 
+app = Flask(__name__)
 @app.route('/')
 def hello():
-    return jsonify({ "hello": "world" })
+    config = Config("/opt/roivant/config.ini")
+    return jsonify({ config["general"]["greeting"]: "world" })
