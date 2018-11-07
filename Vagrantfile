@@ -16,6 +16,8 @@ if Gem.loaded_specs['devops-vagrant'].version < Gem::Version.create(MINIMUM_DEVO
 end
 include Devops::Vagrant
 
+require_envvars(["GREETING"])
+
 Vagrant.configure("2") do |config|
   set_basebox(config)
 
@@ -35,6 +37,8 @@ Vagrant.configure("2") do |config|
     # running on the VM.
     #
     machine.vm.network :forwarded_port, guest: 5000, host: 5000
+
+    provision_envvars(machine, ["GREETING"])
 
     provision_chef(machine) do |chef|
       # Add all the roles you want.

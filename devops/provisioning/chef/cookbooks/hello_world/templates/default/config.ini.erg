@@ -1,2 +1,2 @@
 [general]
-greeting = hello
+greeting = $GREETING
